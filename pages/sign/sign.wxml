@@ -1,0 +1,32 @@
+<view class = 'page'>
+  
+  <image src = '{{imgurl}}/finance/statics/images/login.jpg' class='bkimg'></image>
+  <view class="z_index">
+    <view  class='logo'>
+    <image src = '../../images/logo.png' class="log_img"></image>
+    </view>
+    <view class='login_form'>
+      <view class='login_form_user'>
+        <image src = '../../images/user.png' class ='user_img'></image>
+        <view class="user_input">
+          <input class="weui-input " auto-focus bindinput='inituser'  placeholder="请输入用户名"/>
+        </view>
+      </view>
+
+      <view class='login_form_pwd'>
+        <image src = '../../images/pwd.png' class ='pwd_img'></image>
+        <input class="weui-input pwd_input" password="true"  bindinput='initpwd' auto-focus placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view class='login_btn'> 
+        <image src='../../images/login.png' class='login_img' bindtap="sign"  form-type='submit'></image>
+    </view>
+    <view class='login_btn'> 
+        <image src='../../images/loginvisit.png' class='loginVisit_img' bindtap="signVisit"  form-type='submit'></image>
+    </view>
+
+
+
+  </view>
+ 
+</view>

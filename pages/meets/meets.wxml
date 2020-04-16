@@ -1,0 +1,93 @@
+<!--pages/Calendar/Calendar.wxml-->
+<!-- 打卡日历页面 -->
+<view class='all'>
+  <view class="bar">
+    <!-- 上一个月 -->
+    <view class="previous" bindtap="handleCalendar" data-handle="prev">
+      <image src='../../images/pre.png'></image>
+    </view>
+    <!-- 显示年月 -->
+    <view class="date">{{cur_year}} 年 {{cur_month}} 月</view>
+    <!-- 下一个月 -->
+    <view class="next" bindtap="handleCalendar" data-handle="next">
+      <image src='../../images/next.png'></image>
+    </view>
+  </view>
+  <!-- 显示星期 -->
+  <view class="week">
+    <view wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+  </view>
+  <view class='days'>
+    <!-- 列 -->
+    <view class="columns" wx:for="{{days.length/7}}" wx:for-index="i" wx:key="i">
+      <view wx:for="{{days}}" wx:for-index="j" wx:key="j">
+        <!-- 行 -->
+        <view class="rows" wx:if="{{j/7 == i}}">
+          <view class="rows" wx:for="{{7}}" wx:for-index="k" wx:key="k"  >
+            <!-- 每个月份的空的单元格 -->
+            <view class='cell' wx:if="{{days[j+k].date == null}}">
+              <text decode="{{true}}">&nbsp;&nbsp;</text>
+            </view>
+            <!-- 每个月份的有数字的单元格 -->
+            <view class='cell' wx:else>
+              <!-- 当前日期已签到 -->
+              <view  style='background-color:#83C75D'  data-index='{{days[j+k].date}}' bindtap="findmeets"  class='cell'>
+                <text>{{days[j+k].date}}</text>
+              </view>
+            
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 会议列表 -->
+  <view class='count'>
+        <text>{{date}}</text>
+        <view wx:if="{{meets == ''}}">
+            <text>暂无会议</text>
+        </view>
+       
+    
+    <view class="tableView" wx:else>
+    <view class="table_header">
+      <view class="th th1">会议名称</view>
+      <view class="th th2">会议地点</view>
+      <view class="th th3">会议时间</view>
+      <view class="th th2">附件</view>
+    </view>
+    <!-- <block> 并不是一个组件，它仅仅是一个包装元素，不会在页面中做任何渲染，只接受控制属性。 -->
+    <block wx:for="{{meets}}" wx:for-index="index" wx:key="i">
+      <view class="table_cell">
+        <view class="td td1">{{item.meeting_name}}</view>
+        <view class="td td2">{{item.meetroom}}</view>
+        <view class="td td3">{{item.time_start}}</view>
+         <view class="td td2"> <lable class='btn_down' data-index="{{item.id}}" bindtap='findFile'>查看</lable></view>
+      </view>
+    </block>
+
+  </view>
+            <text>{{item.meeting_name}}  {{item.time_start}}</text>
+        </view>
+
+ 
+
+</view>
+
+<!-- 文件列表 -->
+  <view class='typeListBox' wx:if="{{isFile}}">
+    <view class='wrap'>
+      <view class='nav'>
+        <text class='active'>附件</text>
+        
+        <!-- <text class='{{navId==2?"active":""}}' data-id='2' bindtap='getNav'>人员</text> -->
+      </view>
+      <view  class="list_file" wx:for="{{fileList}}" >
+      <label  >{{item.name}}</label> <label class="btn_view"  data-index="{{item.path}}" bindtap='download'>查看</label>
+      </view>
+      <text >(*支持10M以内的doc,xls,pdf格式的文档查看)</text>
+      <view class='btn1'>
+        <button class='' bindtap='confirm'>确定</button>
+      </view>
+    </view>
+  </view>

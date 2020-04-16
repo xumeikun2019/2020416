@@ -1,0 +1,31 @@
+
+{
+  "pages": [
+    "pages/login/login",
+    "pages/sign/sign",
+    "pages/mettingCheck/mettingCheck",
+    "pages/face/face",
+    "pages/home/home",
+    "pages/news/news",
+    "pages/approval/approval",
+    "pages/myCheck/myCheck",
+    "pages/signOut/signOut",
+    "pages/homeVisit/homeVisit",
+    "pages/order/order",
+    "pages/myOrder/myOrder",
+    "pages/endMeets/endMeets",
+    "pages/meets/meets",
+    "pages/leaderMeets/leaderMeets",
+    "pages/companyMeets/companyMeets",
+    "pages/meetOrder/meetOrder",
+    "pages/myMeetOrder/myMeetOrder",
+    "pages/meettingAssign/meettingAssign"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中铝金融",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
